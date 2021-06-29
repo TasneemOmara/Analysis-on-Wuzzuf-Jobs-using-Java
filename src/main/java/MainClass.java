@@ -17,7 +17,7 @@ public class MainClass {
         rd.generatePieChart(withoutNulls, "Company");
         rd.generateCategoryChart (withoutNulls, "Title","Top 10 popular jobs","Jobs", "Frequency of jobs");
         rd.generateCategoryChart (withoutNulls, "Location","Top 10 popular areas","Area", "Number of jobs in the area");
-        // new line
+        // new line conflict
 
 
     }
