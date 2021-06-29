@@ -12,12 +12,9 @@ import static java.util.stream.Collectors.toMap;
 public class MainClass {
     public static void main(String[] args) throws InterruptedException, InvocationTargetException {
         ReadDataFrame rd = new ReadDataFrame();
-        DataFrame df = rd.readDataCsv();
-        DataFrame withoutNulls = rd.removeNulls(df);
         rd.generatePieChart(withoutNulls, "Company");
         rd.generateCategoryChart (withoutNulls, "Title","Top 10 popular jobs","Jobs", "Frequency of jobs");
         rd.generateCategoryChart (withoutNulls, "Location","Top 10 popular areas","Area", "Number of jobs in the area");
-        // new line conflict
 
 
 
