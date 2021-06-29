@@ -11,11 +11,10 @@ import static java.util.stream.Collectors.toMap;
 
 public class MainClass {
     public static void main(String[] args) throws InterruptedException, InvocationTargetException {
-        // testing if conflict exist
         ReadDataFrame rd = new ReadDataFrame();
-        rd.generatePieChart(withoutNulls, "Company");
-        rd.generateCategoryChart (withoutNulls, "Title","Top 10 popular jobs","Jobs", "Frequency of jobs");
-        rd.generateCategoryChart (withoutNulls, "Location","Top 10 popular areas","Area", "Number of jobs in the area");
+        rd.generatePieChart("Company");
+        rd.generateCategoryChart ("Title","Top 10 popular jobs","Jobs", "Frequency of jobs");
+        rd.generateCategoryChart ("Location","Top 10 popular areas","Area", "Number of jobs in the area");
 
 
 

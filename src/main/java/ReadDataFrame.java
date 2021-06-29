@@ -11,11 +11,14 @@ import static java.util.stream.Collectors.toMap;
 
 
 public class ReadDataFrame {
-    private DataFrame df = null;
-    public void ReadDataFrame () {
+    private DataFrame df ;
+
+
+    public ReadDataFrame () {
         CSVFormat f = CSVFormat.DEFAULT.withFirstRecordAsHeader();
 
         try {
+
             df = Read.csv("src/main/resources/Wuzzuf_Jobs.csv", f);
             System.out.println("First10 rows of the Dataframe:");
             System.out.println(df.toString(10));
@@ -26,13 +29,11 @@ public class ReadDataFrame {
         } catch (URISyntaxException e2) {
             e2.printStackTrace();
         }
-        DataFrame df_withoutNull=df.omitNullRows();
-        System.out.println("Rows before removing nulls are " + df.nrows());
-        System.out.println("Rows without nulls are : "+ df_withoutNull.nrows());
+        df=df.omitNullRows();
 
     }
 
-    public static void generatePieChart(DataFrame df, String col) {
+    public void generatePieChart( String col) {
         Map<String, Long> jobsMap = df.stream().collect(Collectors.groupingBy(row -> row.getString(col), Collectors.counting()));
         Map<String, Long> jobsMapSorted =  jobsMap.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
@@ -48,7 +49,7 @@ public class ReadDataFrame {
 
     }
 
-    public static void generateCategoryChart (DataFrame df, String col, String graphTitle, String xLabel,String yLabel){
+    public void generateCategoryChart ( String col, String graphTitle, String xLabel,String yLabel){
         Map<String, Long> frequencyMap = df.stream().collect(Collectors.groupingBy(row -> row.getString(col), Collectors.counting()));
         Map<String, Long> frequencyMapSorted= frequencyMap.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).limit(10)
                         .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
