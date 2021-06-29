@@ -11,6 +11,7 @@ import static java.util.stream.Collectors.toMap;
 
 public class MainClass {
     public static void main(String[] args) throws InterruptedException, InvocationTargetException {
+        // testing if conflict exist
         ReadDataFrame rd = new ReadDataFrame();
         DataFrame df = rd.readDataCsv();
         DataFrame withoutNulls = rd.removeNulls(df);
